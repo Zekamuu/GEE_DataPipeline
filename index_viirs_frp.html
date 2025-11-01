@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_viirs_fire {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+        .leaflet-container { font-size: 1rem; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            position:absolute;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+        }
+        
+         .leaflet-image-layer {
+             /* old android/safari*/
+             image-rendering: -webkit-optimize-contrast;
+             image-rendering: crisp-edges; /* safari */
+             image-rendering: pixelated; /* chrome */
+             image-rendering: -moz-crisp-edges; /* firefox */
+             image-rendering: -o-crisp-edges; /* opera */
+             -ms-interpolation-mode: nearest-neighbor; /* ie */
+         }
+         
+         /* Ensure proper transparency handling for fire data */
+         .leaflet-image-layer img {
+             background: transparent !important;
+             mix-blend-mode: normal;
+         }
+        
+        .foliumtooltip {
+            
+        }
+        .foliumtooltip table{
+            margin: auto;
+        }
+        .foliumtooltip tr{
+            text-align: left;
+        }
+        .foliumtooltip th{
+            padding: 2px; padding-right: 8px;
+        }
+        
+        .control-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            min-width: 300px;
+        }
+        
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        
+        .slider-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .date-display {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .fire-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    </style>
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+</head>
+<body>
+    
+    <div class="control-panel">
+        <h4 style="margin-top: 0; color: #d32f2f;">🔥 VIIRS Fire Data Viewer</h4>
+        <div class="slider-container">
+            <label for="date-slider">Select Date:</label>
+            <input type="range" id="date-slider" min="0" max="0" value="0" step="1" 
+                oninput="updateDateDisplay()" onchange="updateMap()">
+            <div class="date-display" id="date-label">Loading...</div>
+        </div>
+        
+         <div class="fire-info">
+             <strong>Fire Radiative Power (FRP)</strong><br>
+             Dark red markers indicate active fire detections<br>
+             Background is transparent - only fire pixels are visible<br>
+             Data from NASA/LANCE/SNPP_VIIRS/C2
+         </div>
+    </div>
+
+    <div class="folium-map" id="map_viirs_fire"></div>
+
+<script>
+    // Available VIIRS fire data dates
+    const viirsDates = [
+        "2024-07-01", "2024-08-01", "2024-09-01", "2024-10-01", "2024-11-01", "2024-12-01",
+        "2025-10-01"
+    ];
+    
+    // Punjab, India bounds (approximate)
+    const punjabBounds = [[29.0, 73.5], [32.0, 77.0]];
+    
+    let currentOverlay = null;
+    
+    // Initialize map centered on Punjab
+    var map_viirs_fire = L.map("map_viirs_fire", {
+        center: [30.8143, 75.1712], // Punjab center
+        crs: L.CRS.EPSG3857,
+        zoom: 8,
+        zoomControl: true,
+        preferCanvas: false,
+    });
+
+    // Add OpenStreetMap tile layer
+    var tile_layer = L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            minZoom: 0,
+            maxZoom: 19,
+            maxNativeZoom: 19,
+            noWrap: false,
+            attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+            subdomains: "abc",
+            detectRetina: false,
+            tms: false,
+            opacity: 1,
+        }
+    );
+    tile_layer.addTo(map_viirs_fire);
+
+    // Add Punjab boundary
+    var punjab_boundary = L.rectangle(punjabBounds, {
+        color: 'black',
+        weight: 2,
+        fillOpacity: 0,
+        opacity: 1
+    }).addTo(map_viirs_fire);
+
+    // Initialize slider
+    function initializeSlider() {
+        const slider = document.getElementById('date-slider');
+        slider.max = viirsDates.length - 1;
+        slider.value = viirsDates.length - 1; // Start with latest date
+        updateDateDisplay();
+        updateMap();
+    }
+
+    // Update date display
+    function updateDateDisplay() {
+        const slider = document.getElementById('date-slider');
+        const dateIndex = parseInt(slider.value);
+        const selectedDate = viirsDates[dateIndex];
+        document.getElementById('date-label').textContent = selectedDate;
+    }
+
+    // Update map with selected date
+    function updateMap() {
+        const slider = document.getElementById('date-slider');
+        const dateIndex = parseInt(slider.value);
+        const selectedDate = viirsDates[dateIndex];
+        
+        // Remove current overlay if it exists
+        if (currentOverlay) {
+            map_viirs_fire.removeLayer(currentOverlay);
+        }
+        
+        // Add new overlay
+        const imagePath = `exported_data/viirs_frp_${selectedDate}.png`;
+        
+        // Check if image exists by trying to load it
+        const img = new Image();
+        img.onload = function() {
+             currentOverlay = L.imageOverlay(
+                 imagePath,
+                 punjabBounds,
+                 {
+                     opacity: 1.0, // Full opacity since PNG already has transparency
+                     interactive: true,
+                     crossOrigin: false,
+                     zindex: 1,
+                 }
+             ).addTo(map_viirs_fire);
+        };
+        img.onerror = function() {
+            console.log(`Image not found: ${imagePath}`);
+            // You could show a message to the user here
+        };
+        img.src = imagePath;
+    }
+
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeSlider();
+    });
+
+</script>
+</body>
+</html>

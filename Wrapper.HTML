@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c7347220cd273fa0ff709cd12ce7b4f8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c7347220cd273fa0ff709cd12ce7b4f8" ></div>
+        
+</body>
+<script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const start_date = urlParams.get('start_date');
+            const end_date = urlParams.get('end_date');
+    
+            var map_c7347220cd273fa0ff709cd12ce7b4f8 = L.map(
+                "map_c7347220cd273fa0ff709cd12ce7b4f8",
+                {
+                    center: [28.6139, 77.209],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a67d8be22b0904726619b508e2252e0a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a67d8be22b0904726619b508e2252e0a.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+        
+    
+            var image_overlay_3c55195ae215ada569e089b33cfe809d = L.imageOverlay(
+                `file:///C:/Windsurf/GEE_Code/exported_data/${start_date}/aerosol_${start_date}_${end_date}.png`,
+                [[28.19811676851178, 76.84188940358388], [29.00660052421935, 77.65037315929145]],
+                {
+  "opacity": 0.7,
+  "interactive": true,
+  "crossOrigin": false,
+  "zindex": 1,
+}
+            );
+        
+    
+            
+    
+            var image_overlay_468150b9db91c6201b6e637b3db96a08 = L.imageOverlay(
+                `file:///C:/Windsurf/GEE_Code/exported_data/${start_date}/no2_${start_date}_${end_date}.png`,
+                [[28.19811676851178, 76.84188940358388], [29.00660052421935, 77.65037315929145]],
+                {
+  "opacity": 0.7,
+  "interactive": true,
+  "crossOrigin": false,
+  "zindex": 1,
+}
+            );
+        
+    
+            
+        
+    
+            var image_overlay_f0541502b7d1ca6480533c6f36582638 = L.imageOverlay(
+                `file:///C:/Windsurf/GEE_Code/exported_data/${start_date}/so2_${start_date}_${end_date}.png`,
+                [[28.19811676851178, 76.84188940358388], [29.00660052421935, 77.65037315929145]],
+                {
+  "opacity": 0.7,
+  "interactive": true,
+  "crossOrigin": false,
+  "zindex": 1,
+}
+            );
+        
+    
+            
+        
+    
+            var image_overlay_b9910dab43a88db9ea9f194752c67c5f = L.imageOverlay(
+                `file:///C:/Windsurf/GEE_Code/exported_data/${start_date}/co_${start_date}_${end_date}.png`,
+                [[28.19811676851178, 76.84188940358388], [29.00660052421935, 77.65037315929145]],
+                {
+  "opacity": 0.7,
+  "interactive": true,
+  "crossOrigin": false,
+  "zindex": 1,
+}
+            );
+        
+            
+    
+
+        function geo_json_ee8238d1b4375f9370276ee58fdec454_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ee8238d1b4375f9370276ee58fdec454 = L.geoJson(null, {
+                onEachFeature: geo_json_ee8238d1b4375f9370276ee58fdec454_onEachFeature,
+            
+            ...{
+}
+        });
+
+        function geo_json_ee8238d1b4375f9370276ee58fdec454_add (data) {
+            geo_json_ee8238d1b4375f9370276ee58fdec454
+                .addData(data);
+        }
+            geo_json_ee8238d1b4375f9370276ee58fdec454_add({"copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.", "features": [{"geometry": {"coordinates": [77.3599278, 28.3454961], "type": "Point"}, "id": "way/65453989", "properties": {"@geometry": "center", "@id": "way/65453989", "landuse": "industrial", "name": "Faridabad Thermal Power Plant", "operator": "NTPC", "operator:wikidata": "Q1967805", "plant:method": "combustion", "plant:output:electricity": "430 MW", "plant:source": "gas", "power": "plant", "wikidata": "Q5435280"}, "type": "Feature"}, {"geometry": {"coordinates": [77.101785, 28.7330743], "type": "Point"}, "id": "way/78542610", "properties": {"@geometry": "center", "@id": "way/78542610", "landuse": "industrial", "name": "Rithala Power Plant", "plant:method": "combustion", "plant:output:electricity": "108 MW", "plant:source": "gas", "power": "plant", "source": "https://www.gem.wiki/Rithala_Gas_power_plant"}, "type": "Feature"}, {"geometry": {"coordinates": [77.6157433, 28.5926623], "type": "Point"}, "id": "way/103170709", "properties": {"@geometry": "center", "@id": "way/103170709", "landuse": "industrial", "name": "Dadri Powerplant", "operator": "NTPC", "operator:wikidata": "Q1967805", "plant:method": "combustion", "plant:output:electricity": "2637 MW", "plant:source": "coal;gas", "power": "plant", "wikidata": "Q6955488", "wikipedia": "en:NTPC Dadri"}, "type": "Feature"}, {"geometry": {"coordinates": [77.2524477, 28.6167647], "type": "Point"}, "id": "way/139071683", "properties": {"@geometry": "center", "@id": "way/139071683", "landuse": "industrial", "name": "Pragati-I Combined Cycle Gas Power Station", "operator": "Pragati Power Corporation Limited", "plant:method": "combustion", "plant:output:electricity": "330 MW", "plant:source": "gas", "plant:type": "combined_cycle", "power": "plant", "source": "http://ipgcl-ppcl.gov.in/powerstations.htm", "wikidata": "Q7237615"}, "type": "Feature"}, {"geometry": {"coordinates": [77.2502162, 28.6190348], "type": "Point"}, "id": "way/139071685", "properties": {"@geometry": "center", "@id": "way/139071685", "landuse": "industrial", "name": "Indraprastha Gas Turbine Power Station", "operator": "Indraprastha Power Generation Company Limited", "plant:method": "combustion", "plant:output:electricity": "270 MW", "plant:source": "gas", "plant:type": "combined_cycle", "power": "plant", "source": "http://ipgcl-ppcl.gov.in/powerstations.htm", "wikidata": "Q5973021"}, "type": "Feature"}, {"geometry": {"coordinates": [77.0717398, 28.7964571], "type": "Point"}, "id": "way/172301971", "properties": {"@geometry": "center", "@id": "way/172301971", "landuse": "industrial", "name": "Pragati-III Combined Cycle Power Plant", "plant:method": "combustion", "plant:output:electricity": "1500 MW", "plant:source": "gas", "plant:type": "combined_cycle", "power": "plant", "wikidata": "Q7237608"}, "type": "Feature"}, {"geometry": {"coordinates": [77.3237051, 28.6231219], "type": "Point"}, "id": "way/283807712", "properties": {"@geometry": "center", "@id": "way/283807712", "barrier": "wall", "name": "Bio-Gas Plant", "plant:source": "biogas", "power": "plant"}, "type": "Feature"}, {"geometry": {"coordinates": [77.3095282, 28.6763708], "type": "Point"}, "id": "way/479980889", "properties": {"@geometry": "center", "@id": "way/479980889", "name": "BSES", "power": "plant"}, "type": "Feature"}, {"geometry": {"coordinates": [76.8951816, 28.3669709], "type": "Point"}, "id": "way/1194059692", "properties": {"@geometry": "center", "@id": "way/1194059692", "landuse": "industrial", "name": "Maruti Manesar Power Station", "power": "plant"}, "type": "Feature"}, {"geometry": {"coordinates": [77.2803604, 28.5077968], "type": "Point"}, "id": "way/1286855149", "properties": {"@geometry": "center", "@id": "way/1286855149", "building": "yes", "plant:source": "waste", "power": "plant"}, "type": "Feature"}, {"geometry": {"coordinates": [76.8953483, 28.7340981], "type": "Point"}, "id": "node/4976487056", "properties": {"@id": "node/4976487056", "name": "Barahi Main Power Station", "power": "plant"}, "type": "Feature"}, {"geometry": {"coordinates": [76.8953765, 28.7341159], "type": "Point"}, "id": "node/4976496445", "properties": {"@id": "node/4976496445", "name": "Mini Power Stataion", "power": "plant"}, "type": "Feature"}], "generator": "overpass-turbo", "timestamp": "2025-09-07T17:25:30Z", "type": "FeatureCollection"});
+        geo_json_ee8238d1b4375f9370276ee58fdec454.setStyle(function(feature) {return feature.properties.style;});
+
+        
+    
+    geo_json_ee8238d1b4375f9370276ee58fdec454.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["name"];
+    let aliases = ["Power Plant Name"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            var layer_control_769be78189cf084c5efb027f40ccacf6_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_a67d8be22b0904726619b508e2252e0a,
+                },
+                overlays :  {
+                    "AEROSOL Mean" : image_overlay_3c55195ae215ada569e089b33cfe809d,
+                    "NO2 Mean" : image_overlay_468150b9db91c6201b6e637b3db96a08,
+                    "SO2 Mean" : image_overlay_f0541502b7d1ca6480533c6f36582638,
+                    "CO Mean" : image_overlay_b9910dab43a88db9ea9f194752c67c5f,
+                    "Power Plants" : geo_json_ee8238d1b4375f9370276ee58fdec454,
+                },
+            };
+            let layer_control_769be78189cf084c5efb027f40ccacf6 = L.control.layers(
+                layer_control_769be78189cf084c5efb027f40ccacf6_layers.base_layers,
+                layer_control_769be78189cf084c5efb027f40ccacf6_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+
+            if (location.search.includes('layers=') && location.search.match(/layers=([^&]*)/)) {
+                const layers = location.search.match(/layers=([^&]*)/)[1].toLowerCase().split(',');
+                if (layers.includes('so2')) {
+                    image_overlay_f0541502b7d1ca6480533c6f36582638.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+                }
+                if (layers.includes('co')) {
+                    image_overlay_b9910dab43a88db9ea9f194752c67c5f.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+                }
+                if (layers.includes('no2')) {
+                    image_overlay_468150b9db91c6201b6e637b3db96a08.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+                }
+                if (layers.includes('aerosol')) {
+                    image_overlay_3c55195ae215ada569e089b33cfe809d.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+                }
+                if (layers.includes('powerplants')) {
+                    geo_json_ee8238d1b4375f9370276ee58fdec454.addTo(map_c7347220cd273fa0ff709cd12ce7b4f8);
+                }
+            }
+        
+</script>
+</html>

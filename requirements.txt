@@ -1,0 +1,12 @@
+geemap>=0.24.0
+leafmap>=0.20.0
+earthengine-api>=0.1.360
+pandas>=1.5.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+folium>=0.14.0
+ipywidgets>=8.0.0
+jupyter>=1.0.0
+rasterio
+xarray>=2025.8.0
+localtileserver

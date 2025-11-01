@@ -1,0 +1,256 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-09-07T17:25:30Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/65453989",
+        "landuse": "industrial",
+        "name": "Faridabad Thermal Power Plant",
+        "operator": "NTPC",
+        "operator:wikidata": "Q1967805",
+        "plant:method": "combustion",
+        "plant:output:electricity": "430 MW",
+        "plant:source": "gas",
+        "power": "plant",
+        "wikidata": "Q5435280",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3599278,
+          28.3454961
+        ]
+      },
+      "id": "way/65453989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/78542610",
+        "landuse": "industrial",
+        "name": "Rithala Power Plant",
+        "plant:method": "combustion",
+        "plant:output:electricity": "108 MW",
+        "plant:source": "gas",
+        "power": "plant",
+        "source": "https://www.gem.wiki/Rithala_Gas_power_plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.101785,
+          28.7330743
+        ]
+      },
+      "id": "way/78542610"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/103170709",
+        "landuse": "industrial",
+        "name": "Dadri Powerplant",
+        "operator": "NTPC",
+        "operator:wikidata": "Q1967805",
+        "plant:method": "combustion",
+        "plant:output:electricity": "2637 MW",
+        "plant:source": "coal;gas",
+        "power": "plant",
+        "wikidata": "Q6955488",
+        "wikipedia": "en:NTPC Dadri",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.6157433,
+          28.5926623
+        ]
+      },
+      "id": "way/103170709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/139071683",
+        "landuse": "industrial",
+        "name": "Pragati-I Combined Cycle Gas Power Station",
+        "operator": "Pragati Power Corporation Limited",
+        "plant:method": "combustion",
+        "plant:output:electricity": "330 MW",
+        "plant:source": "gas",
+        "plant:type": "combined_cycle",
+        "power": "plant",
+        "source": "http://ipgcl-ppcl.gov.in/powerstations.htm",
+        "wikidata": "Q7237615",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2524477,
+          28.6167647
+        ]
+      },
+      "id": "way/139071683"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/139071685",
+        "landuse": "industrial",
+        "name": "Indraprastha Gas Turbine Power Station",
+        "operator": "Indraprastha Power Generation Company Limited",
+        "plant:method": "combustion",
+        "plant:output:electricity": "270 MW",
+        "plant:source": "gas",
+        "plant:type": "combined_cycle",
+        "power": "plant",
+        "source": "http://ipgcl-ppcl.gov.in/powerstations.htm",
+        "wikidata": "Q5973021",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2502162,
+          28.6190348
+        ]
+      },
+      "id": "way/139071685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/172301971",
+        "landuse": "industrial",
+        "name": "Pragati-III Combined Cycle Power Plant",
+        "plant:method": "combustion",
+        "plant:output:electricity": "1500 MW",
+        "plant:source": "gas",
+        "plant:type": "combined_cycle",
+        "power": "plant",
+        "wikidata": "Q7237608",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0717398,
+          28.7964571
+        ]
+      },
+      "id": "way/172301971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/283807712",
+        "barrier": "wall",
+        "name": "Bio-Gas Plant",
+        "plant:source": "biogas",
+        "power": "plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3237051,
+          28.6231219
+        ]
+      },
+      "id": "way/283807712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/479980889",
+        "name": "BSES",
+        "power": "plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3095282,
+          28.6763708
+        ]
+      },
+      "id": "way/479980889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1194059692",
+        "landuse": "industrial",
+        "name": "Maruti Manesar Power Station",
+        "power": "plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8951816,
+          28.3669709
+        ]
+      },
+      "id": "way/1194059692"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1286855149",
+        "building": "yes",
+        "plant:source": "waste",
+        "power": "plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2803604,
+          28.5077968
+        ]
+      },
+      "id": "way/1286855149"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4976487056",
+        "name": "Barahi Main Power Station",
+        "power": "plant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8953483,
+          28.7340981
+        ]
+      },
+      "id": "node/4976487056"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4976496445",
+        "name": "Mini Power Stataion",
+        "power": "plant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8953765,
+          28.7341159
+        ]
+      },
+      "id": "node/4976496445"
+    }
+  ]
+}
